@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:  
+  api:
+    build: .
+    container_name: app_notificacoes
+    restart: always
+    environment:
+      - FLASK_ENV=docker
+    command: python run.py
+    volumes:
+      - ./:/code
+    ports:
+      - 8080:8080
+    networks:
+      torabit-net:
+        ipv4_address: 172.19.0.5
+      
+networks:
+  torabit-net:
+    external: true
